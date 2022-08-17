@@ -1,0 +1,39 @@
+[unchecked="true"] {
+  background: gray;
+}
+.unchecked {
+  text-align: center;
+  height: 25px;
+  width: 25px;
+}
+
+.empty {
+  text-align: center;
+  background: lightgray;
+  height: 25px;
+  width: 25px;
+}
+
+.selected {
+  background: red;
+}
+
+td {
+  user-select: none;
+}
+
+.hidden {
+  display:none;
+}
+
+.shown {
+  display: block;
+}
+
+td.mine {
+  background: "red";
+}
+
+.safe {
+  background: "green";
+}

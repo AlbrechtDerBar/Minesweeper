@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div id="start" class="shown">
+    <p>Select Difficulty:</p>
+    <input type="radio" id="brainDead" mines="1" name="difficulty">
+    <label for="brainDead">Brain Dead</label><br>
+    <input type="radio" id="easy"mines="10" name="difficulty">
+    <label for="easy">Easy</label><br>
+    <input type="radio" id="normal"mines="16" name="difficulty">
+    <label for="normal">Normal</label><br>
+    <input type="radio" id="hard"mines="30" name="difficulty">
+    <label for="hard">Hard</label><br>
+    <input type="radio" id="Psychic"mines="80" name="difficulty">
+    <label for="Psychic">Psychic</label><br>
+    <input type="radio" id="Impossible"mines="81" name="difficulty">
+    <label for="Impossible">Impossible</label><br>
+    <button onclick="start()">Start</button>
+    <button onclick="resume()" id="resume" class="hidden">Resume</button>
+  </div>
+  
+  <div id="game" class = "hidden">
+    <button onclick="difficulty()">Difficulty</button><br>
+    <p>Mines Left: <a id="minesLeft"></a></p>
+    <table>
+      <tr>
+        <td row="0" column="0" id="00" unchecked="true" class="unchecked"></td>
+        <td row="0" column="1" id="01" unchecked="true" class="unchecked"></td>
+        <td row="0" column="2" id="02" unchecked="true" class="unchecked"></td>
+        <td row="0" column="3" id="03" unchecked="true" class="unchecked"></td>
+        <td row="0" column="4" id="04" unchecked="true" class="unchecked"></td>
+        <td row="0" column="5" id="05" unchecked="true" class="unchecked"></td>
+        <td row="0" column="6" id="06" unchecked="true" class="unchecked"></td>
+        <td row="0" column="7" id="07" unchecked="true" class="unchecked"></td>
+        <td row="0" column="8" id="08" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="1" column="0" id="10" unchecked="true" class="unchecked"></td>
+        <td row="1" column="1" id="11" unchecked="true" class="unchecked"></td>
+        <td row="1" column="2" id="12" unchecked="true" class="unchecked"></td>
+        <td row="1" column="3" id="13" unchecked="true" class="unchecked"></td>
+        <td row="1" column="4" id="14" unchecked="true" class="unchecked"></td>
+        <td row="1" column="5" id="15" unchecked="true" class="unchecked"></td>
+        <td row="1" column="6" id="16" unchecked="true" class="unchecked"></td>
+        <td row="1" column="7" id="17" unchecked="true" class="unchecked"></td>
+        <td row="1" column="8" id="18" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="2" column="0" id="20" unchecked="true" class="unchecked"></td>
+        <td row="2" column="1" id="21" unchecked="true" class="unchecked"></td>
+        <td row="2" column="2" id="22" unchecked="true" class="unchecked"></td>
+        <td row="2" column="3" id="23" unchecked="true" class="unchecked"></td>
+        <td row="2" column="4" id="24" unchecked="true" class="unchecked"></td>
+        <td row="2" column="5" id="25" unchecked="true" class="unchecked"></td>
+        <td row="2" column="6" id="26" unchecked="true" class="unchecked"></td>
+        <td row="2" column="7" id="27" unchecked="true" class="unchecked"></td>
+        <td row="2" column="8" id="28" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="3" column="0" id="30" unchecked="true" class="unchecked"></td>
+        <td row="3" column="1" id="31" unchecked="true" class="unchecked"></td>
+        <td row="3" column="2" id="32" unchecked="true" class="unchecked"></td>
+        <td row="3" column="3" id="33" unchecked="true" class="unchecked"></td>
+        <td row="3" column="4" id="34" unchecked="true" class="unchecked"></td>
+        <td row="3" column="5" id="35" unchecked="true" class="unchecked"></td>
+        <td row="3" column="6" id="36" unchecked="true" class="unchecked"></td>
+        <td row="3" column="7" id="37" unchecked="true" class="unchecked"></td>
+        <td row="3" column="8" id="38" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="4" column="0" id="40" unchecked="true" class="unchecked"></td>
+        <td row="4" column="1" id="41" unchecked="true" class="unchecked"></td>
+        <td row="4" column="2" id="42" unchecked="true" class="unchecked"></td>
+        <td row="4" column="3" id="43" unchecked="true" class="unchecked"></td>
+        <td row="4" column="4" id="44" unchecked="true" class="unchecked"></td>
+        <td row="4" column="5" id="45" unchecked="true" class="unchecked"></td>
+        <td row="4" column="6" id="46" unchecked="true" class="unchecked"></td>
+        <td row="4" column="7" id="47" unchecked="true" class="unchecked"></td>
+        <td row="4" column="8" id="48" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="5" column="0" id="50" unchecked="true" class="unchecked"></td>
+        <td row="5" column="1" id="51" unchecked="true" class="unchecked"></td>
+        <td row="5" column="2" id="52" unchecked="true" class="unchecked"></td>
+        <td row="5" column="3" id="53" unchecked="true" class="unchecked"></td>
+        <td row="5" column="4" id="54" unchecked="true" class="unchecked"></td>
+        <td row="5" column="5" id="55" unchecked="true" class="unchecked"></td>
+        <td row="5" column="6" id="56" unchecked="true" class="unchecked"></td>
+        <td row="5" column="7" id="57" unchecked="true" class="unchecked"></td>
+        <td row="5" column="8" id="58" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="6" column="0" id="60" unchecked="true" class="unchecked"></td>
+        <td row="6" column="1" id="61" unchecked="true" class="unchecked"></td>
+        <td row="6" column="2" id="62" unchecked="true" class="unchecked"></td>
+        <td row="6" column="3" id="63" unchecked="true" class="unchecked"></td>
+        <td row="6" column="4" id="64" unchecked="true" class="unchecked"></td>
+        <td row="6" column="5" id="65" unchecked="true" class="unchecked"></td>
+        <td row="6" column="6" id="66" unchecked="true" class="unchecked"></td>
+        <td row="6" column="7" id="67" unchecked="true" class="unchecked"></td>
+        <td row="6" column="8" id="68" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="7" column="0" id="70" unchecked="true" class="unchecked"></td>
+        <td row="7" column="1" id="71" unchecked="true" class="unchecked"></td>
+        <td row="7" column="2" id="72" unchecked="true" class="unchecked"></td>
+        <td row="7" column="3" id="73" unchecked="true" class="unchecked"></td>
+        <td row="7" column="4" id="74" unchecked="true" class="unchecked"></td>
+        <td row="7" column="5" id="75" unchecked="true" class="unchecked"></td>
+        <td row="7" column="6" id="76" unchecked="true" class="unchecked"></td>
+        <td row="7" column="7" id="77" unchecked="true" class="unchecked"></td>
+        <td row="7" column="8" id="78" unchecked="true" class="unchecked"></td>
+      </tr>
+      <tr>
+        <td row="8" column="0" id="80" unchecked="true" class="unchecked"></td>
+        <td row="8" column="1" id="81" unchecked="true" class="unchecked"></td>
+        <td row="8" column="2" id="82" unchecked="true" class="unchecked"></td>
+        <td row="8" column="3" id="83" unchecked="true" class="unchecked"></td>
+        <td row="8" column="4" id="84" unchecked="true" class="unchecked"></td>
+        <td row="8" column="5" id="85" unchecked="true" class="unchecked"></td>
+        <td row="8" column="6" id="86" unchecked="true" class="unchecked"></td>
+        <td row="8" column="7" id="87" unchecked="true" class="unchecked"></td>
+        <td row="8" column="8" id="88" unchecked="true" class="unchecked"></td>
+      </tr>
+    </table>
+    <button id="flag" class="unselected" onclick="flagStyle()">Flag</button>
+    <br>
+    <button onclick="newGame()" class="hidden" id="newGame">New Game</button>
+  </div>
+  
+</body>
+
+</html
